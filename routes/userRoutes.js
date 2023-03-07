@@ -5,7 +5,7 @@
   const {stopLogin}=require("../middleware/auth")
   
 
-   router.get("/",stopLogin,loadSignup)
+   router.get("/",loadSignup)
    
    router.get("/login",stopLogin,loadLogin)
     
