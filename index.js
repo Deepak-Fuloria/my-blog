@@ -32,21 +32,21 @@ const userRoutes=require("./routes/userRoutes")
 //   saveUninitialized: true
 // }));
 
-// app.use(flash())
-// app.use((req,res,next)=>{
-//  res.locals.message=req.flash()
-//  next();
-// })
-// app.use(express.static(path.join(__dirname,"./views")))
+app.use(flash())
+app.use((req,res,next)=>{
+ res.locals.message=req.flash()
+ next();
+})
+ app.use(express.static(path.join(__dirname,"./views")))
 
-// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
 app.set("view engine","ejs")
 
 app.use(userRoutes)
-// app.use(profileRoutes)
-// app.use(postRoutes)
+app.use(profileRoutes)
+app.use(postRoutes)
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log(`server is running on port no ${process.env.PORT || 3000}`)
