@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+    <%- include("components/nav.ejs")%>
+   <div class="postFormContainer">
+    <%- include("components/postsForm.ejs")%>
+   </div>
+    </div>
+   </div>
+
+<script>
+
+let imageName=document.getElementById("imageLabel")
+ 
+imageName.addEventListener("change",()=>{
+
+    let val=imageName.value;
+  let split=val.split("\\")
+  let index=split.length-1;
+  label=document.querySelector(".fileLabel")
+  label.innerText=split[index]
+   
+})
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
