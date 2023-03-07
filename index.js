@@ -4,7 +4,7 @@ const mongoose=require("mongoose")
 const bodyParser = require('body-parser')
 require("dotenv").config()
 const connect=require("./models/db")        //connection with mongo
-const PORT=process.env.PORT || 3000;
+// const PORT=process.env.PORT || 3000;
 connect();                                 //connection with mongo
 const postRoutes=require("./routes/postsRoutes")
 const path=require("path")
@@ -49,8 +49,8 @@ app.use(userRoutes)
 app.use(profileRoutes)
 app.use(postRoutes)
 
-app.listen(PORT,()=>{
-    console.log(`server is running on port no ${PORT}`)
+app.listen(process.env.PORT || 3000,()=>{
+    console.log(`server is running on port no ${process.env.PORT || 3000}`)
    
 })
 
