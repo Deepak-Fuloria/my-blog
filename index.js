@@ -6,7 +6,7 @@ require("dotenv").config()
 // const connect=require("./models/db")        //connection with mongo
 // const PORT=process.env.PORT || 3000;
 //  connect();                                 //connection with mongo
-// const postRoutes=require("./routes/postsRoutes")
+const postRoutes=require("./routes/postsRoutes")
 const path=require("path")
 
 //  var session = require('express-session');
@@ -14,7 +14,7 @@ const path=require("path")
 //  var MongoDBStore = require('connect-mongodb-session')(session);
 // const flash=require("express-flash")
 const userRoutes=require("./routes/userRoutes")
-// const profileRoutes=require("./routes/profileRoutes")
+ const profileRoutes=require("./routes/profileRoutes")
 
 
 // var store = new MongoDBStore({
@@ -45,8 +45,8 @@ app.use(express.json())
 app.set("view engine","ejs")
 
 app.use(userRoutes)
-// app.use(profileRoutes)
-// app.use(postRoutes)
+app.use(profileRoutes)
+app.use(postRoutes)
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log(`server is running on port no ${process.env.PORT || 3000}`)
