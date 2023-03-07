@@ -9,28 +9,28 @@ require("dotenv").config()
 const postRoutes=require("./routes/postsRoutes")
 const path=require("path")
 
-// var session = require('express-session');
+ var session = require('express-session');
 
-// var MongoDBStore = require('connect-mongodb-session')(session);
+ var MongoDBStore = require('connect-mongodb-session')(session);
 const flash=require("express-flash")
 const userRoutes=require("./routes/userRoutes")
-// const profileRoutes=require("./routes/profileRoutes")
+const profileRoutes=require("./routes/profileRoutes")
 
 
-// var store = new MongoDBStore({
-//   uri: process.env.DB,
-//   collection: 'mySessions'
-// });
+var store = new MongoDBStore({
+  uri: process.env.DB,
+  collection: 'mySessions'
+});
 
-// app.use(require('express-session')({
-//   secret: 'This is a secret',
-//   cookie: {
-//     maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-//   },
-//   store: store,
-//   resave: true,
-//   saveUninitialized: true
-// }));
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true
+}));
 
 app.use(flash())
 app.use((req,res,next)=>{
@@ -39,7 +39,7 @@ app.use((req,res,next)=>{
 })
  app.use(express.static(path.join(__dirname,"./views")))
 
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
 app.set("view engine","ejs")
