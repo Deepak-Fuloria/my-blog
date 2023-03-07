@@ -21,6 +21,7 @@ const stopLogin=(req,res,next)=>{
 
 if(req.session.user){
     const token=req.session.user
+   
     const verify=jwt.verify(token,process.env.jwtKey||"myjwtkey")
    
     if(verify){
